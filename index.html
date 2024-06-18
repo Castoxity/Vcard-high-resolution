@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vCard QR Code Generator</title>
+</head>
+<body>
+    <h1>vCard QR Code Generator</h1>
+    <form id="vcard-form">
+        <input type="text" id="firstname" placeholder="First Name" required>
+        <input type="text" id="lastname" placeholder="Last Name" required>
+        <input type="text" id="personalphone" placeholder="Personal Phone" required>
+        <input type="text" id="workphone" placeholder="Work Phone" required>
+        <input type="email" id="email-1" placeholder="Email [preferably personal]" required>
+        <input type="email" id="email-2" placeholder="Second Email [preferably work]">
+        <input type="text" id="company" placeholder="Company" required>
+        <input type="text" id="position" placeholder="Position" required>
+        <input type="text" id="street" placeholder="Street" required>
+        <input type="text" id="city" placeholder="City" required>
+        <input type="text" id="state" placeholder="State">
+        <input type="text" id="website" placeholder="Website">
+        <button type="submit">generate</button>
+    </form>
+    <div id="qrcode"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
