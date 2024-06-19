@@ -12,7 +12,7 @@ document.getElementById('vcard-form').addEventListener('submit', function(event)
     const email1 = document.getElementById('email-1').value;
     const email2 = document.getElementById('email-2').value;
     const website = document.getElementById('website').value;
-    const vCard = `
+        const vCard = `
 BEGIN:VCARD
 VERSION:3.0
 N:${lname};${fname}
@@ -27,10 +27,63 @@ EMAIL;type=HOME:${email1}
 URL:${website}
 END:VCARD
     `.trim();
-    const qrCodeDiv = document.getElementById('qrcode');
-    qrCodeDiv.innerHTML = '';
+    
     const qr = qrcode(0, 'L');
+
+    //BEGIN:VCARD
+    // VERSION:3.0
+    // N:Gaihre;Achyut
+    // FN:Achyut Gaihre
+    // ORG:
+    // TITLE:
+    // ADR:;;Lalitpur;Bhanu;;;Nepal
+    // TEL;type=CELL:9864474274
+    // TEL;type=WORK:
+    // EMAIL;type=WORK:agaihr10@gmail.com
+    // URL:
+    // END:VCARD
+
     qr.addData(vCard);
     qr.make();
-    qrCodeDiv.innerHTML = qr.createImgTag();
+    const canvas = document.createElement('canvas');
+    const size = 380; 
+    const borderSize = 10;
+    canvas.width = size + borderSize * 2;
+    canvas.height = size + borderSize * 2;
+    const ctx = canvas.getContext('2d');
+
+
+//for border
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    const tileSize = size / qr.getModuleCount();
+    ctx.fillStyle = '#000000';
+    for (let row = 0; row < qr.getModuleCount(); row++) {
+        for (let col = 0; col < qr.getModuleCount(); col++) {
+            ctx.fillStyle = qr.isDark(row, col) ? '#000000' : '#FFFFFF';
+            ctx.fillRect(
+                col * tileSize + borderSize,
+                row * tileSize + borderSize,
+                tileSize,
+                tileSize
+            );
+        }
+    }
+
+
+    //anything below this is to manage the qr, from downloading to clearing the old QRs
+    const qrCodeDiv = document.getElementById('qrcode');
+    qrCodeDiv.innerHTML = '';
+    qrCodeDiv.appendChild(canvas);
+    const downloadBtn = document.getElementById('download-btn');
+    downloadBtn.style.display = 'block';
+    downloadBtn.addEventListener('click', function() {
+        const fileName = prompt('Enter the file name for the QR code:');
+        if (fileName) {
+            const link = document.createElement('a');
+            link.href = canvas.toDataURL('image/png');
+            link.download = `${fileName}.png`;
+            link.click();
+        }
+    });
 });
