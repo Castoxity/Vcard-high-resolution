@@ -7,28 +7,44 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="title">
-            <h1>QR code gen for Vcard</h1>
+    <div class="parent">
+            <div class="title">
+                <h1>QR code gen for Vcard</h1>
+            </div>
+        <div class="form">
+            <form id="vcard-form">
+                <div class="name">
+                    <input type="text" id="firstname" placeholder="First Name" spellcheck="false">
+                    <input type="text" id="lastname" placeholder="Last Name" spellcheck="false">
+                </div>
+                <div class="number">
+                    <input type="text" id="personalphone" placeholder="Personal Phone" spellcheck="false">
+                    <input type="text" id="workphone" placeholder="Work Phone" spellcheck="false">
+                </div>
+                <div class="mail">
+                    <input type="email" id="email-1" placeholder="Email [preferably personal]" spellcheck="false">
+                    <input type="email" id="email-2" placeholder="Second Email [preferably work]" spellcheck="false">
+                </div>
+                <div class="work">
+                    <input type="text" id="company" placeholder="Company" spellcheck="false">
+                    <input type="text" id="position" placeholder="Position" spellcheck="false">
+                    <input type="text" id="website" placeholder="Website" spellcheck="false">
+                </div>
+                <div class="address">
+                    <input type="text" id="street" placeholder="Street" spellcheck="false">
+                    <input type="text" id="city" placeholder="City" spellcheck="false">
+                    <input type="text" id="state" placeholder="State" spellcheck="false">
+                </div>
+                <div class="buttons">
+                    <button type="submit">Generate</button>
+                    <button id="download-btn" style="display: none;">Download</button>
+                </div>
+
+            </form>
+            <div id="qrcode"></div>
+        </div>
     </div>
-    <div class="form">
-        <form id="vcard-form">
-            <input type="text" id="firstname" placeholder="First Name">
-            <input type="text" id="lastname" placeholder="Last Name">
-            <input type="text" id="personalphone" placeholder="Personal Phone">
-            <input type="text" id="workphone" placeholder="Work Phone">
-            <input type="email" id="email-1" placeholder="Email [preferably personal]">
-            <input type="email" id="email-2" placeholder="Second Email [preferably work]">
-            <input type="text" id="company" placeholder="Company">
-            <input type="text" id="position" placeholder="Position">
-            <input type="text" id="street" placeholder="Street">
-            <input type="text" id="city" placeholder="City">
-            <input type="text" id="state" placeholder="State">
-            <input type="text" id="website" placeholder="Website">
-            <button type="submit">Generate</button>
-        </form>
-        <div id="qrcode"></div>
-        <button id="download-btn" style="display: none;">Download QR Code</button>
-    </div>
+   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
     <script src="script.js"></script>
 </body>
