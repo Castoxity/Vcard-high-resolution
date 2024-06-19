@@ -27,33 +27,29 @@ EMAIL;type=HOME:${email1}
 URL:${website}
 END:VCARD
     `.trim();
-    
-    const qr = qrcode(0, 'L');
 
-    //BEGIN:VCARD
+    // BEGIN:VCARD
     // VERSION:3.0
-    // N:Gaihre;Achyut
-    // FN:Achyut Gaihre
+    // N:last;first
+    // FN:first last
     // ORG:
     // TITLE:
     // ADR:;;Lalitpur;Bhanu;;;Nepal
-    // TEL;type=CELL:9864474274
+    // TEL;type=CELL:1234567890
     // TEL;type=WORK:
-    // EMAIL;type=WORK:agaihr10@gmail.com
+    // EMAIL;type=WORK:ach@gmail.com
     // URL:
     // END:VCARD
 
+    const qr = qrcode(0, 'L');
     qr.addData(vCard);
     qr.make();
     const canvas = document.createElement('canvas');
-    const size = 380; 
+    const size = 380;
     const borderSize = 10;
     canvas.width = size + borderSize * 2;
     canvas.height = size + borderSize * 2;
     const ctx = canvas.getContext('2d');
-
-
-//for border
     ctx.fillStyle = '#FFFFFF';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     const tileSize = size / qr.getModuleCount();
@@ -70,14 +66,13 @@ END:VCARD
         }
     }
 
-
-    //anything below this is to manage the qr, from downloading to clearing the old QRs
+// anything below this is for managing qr
     const qrCodeDiv = document.getElementById('qrcode');
     qrCodeDiv.innerHTML = '';
     qrCodeDiv.appendChild(canvas);
     const downloadBtn = document.getElementById('download-btn');
     downloadBtn.style.display = 'block';
-    downloadBtn.addEventListener('click', function() {
+    downloadBtn.onclick = function() {
         const fileName = prompt('Enter the file name for the QR code:');
         if (fileName) {
             const link = document.createElement('a');
@@ -85,5 +80,5 @@ END:VCARD
             link.download = `${fileName}.png`;
             link.click();
         }
-    });
+    };
 });
