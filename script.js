@@ -12,6 +12,7 @@ document.getElementById('vcard-form').addEventListener('submit', function(event)
     const email1 = document.getElementById('email-1').value;
     const email2 = document.getElementById('email-2').value;
     const website = document.getElementById('website').value;
+    const website2 = document.getElementById('website-2').value;
     const country = document.getElementById('country').value;
     const postc = document.getElementById('postcode').value;
         const vCard = `
@@ -27,6 +28,7 @@ TEL;type=WORK:${workphone}
 EMAIL;type=WORK:${email2}
 EMAIL;type=HOME:${email1}
 URL:${website}
+URL:${website2}
 END:VCARD
     `.trim();
 
