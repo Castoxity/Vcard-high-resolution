@@ -15,7 +15,8 @@ document.getElementById('vcard-form').addEventListener('submit', function(event)
     const website2 = document.getElementById('website-2').value;
     const country = document.getElementById('country').value;
     const postc = document.getElementById('postcode').value;
-        const vCard = `
+
+    const vCard = `
 BEGIN:VCARD
 VERSION:3.0
 N:${lname};${fname}
@@ -32,27 +33,16 @@ URL:${website2}
 END:VCARD
     `.trim();
 
-    // BEGIN:VCARD
-    // VERSION:3.0
-    // N:last;first
-    // FN:first last
-    // ORG:
-    // TITLE:
-    // ADR:;;Lalitpur;Bhanu;;;Nepal
-    // TEL;type=CELL:1234567890
-    // TEL;type=WORK:
-    // EMAIL;type=WORK:ach@gmail.com
-    // URL:
-    // END:VCARD
-
     const qr = qrcode(0, 'L');
     qr.addData(vCard);
     qr.make();
+
     const canvas = document.createElement('canvas');
-    const size = 380;
-    const borderSize = 10;
+    const size = 4900;
+    const borderSize = 100;
     canvas.width = size + borderSize * 2;
     canvas.height = size + borderSize * 2;
+
     const ctx = canvas.getContext('2d');
     ctx.fillStyle = '#FFFFFF';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -70,10 +60,11 @@ END:VCARD
         }
     }
 
-// anything below this is for managing qr
     const qrCodeDiv = document.getElementById('qrcode');
     qrCodeDiv.innerHTML = '';
+    canvas.classList.add('qr-canvas');
     qrCodeDiv.appendChild(canvas);
+
     const downloadBtn = document.getElementById('download-btn');
     downloadBtn.style.display = 'block';
     downloadBtn.onclick = function() {
