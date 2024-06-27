@@ -27,7 +27,8 @@ body{
 .number,
 .mail,
 .work,
-.address{
+.address,
+.address-2{
     display:flex;
     justify-content: center;
     margin-top:10px;
@@ -36,7 +37,8 @@ body{
 
 .name input,
 .number input,
-.mail input{
+.mail input,
+.address-2 input{
     width:45%;
     font-size:18px;
     height:35px;
@@ -47,6 +49,11 @@ body{
     width:30%;
     height:35px;
     font-size:18px;
+}
+.address-2,
+.address{
+    padding-top:10px;
+
 }
 
 .buttons{

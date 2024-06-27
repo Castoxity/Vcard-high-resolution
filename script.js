@@ -13,6 +13,7 @@ document.getElementById('vcard-form').addEventListener('submit', function(event)
     const email2 = document.getElementById('email-2').value;
     const website = document.getElementById('website').value;
     const country = document.getElementById('country').value;
+    const postc = document.getElementById('postcode').value;
         const vCard = `
 BEGIN:VCARD
 VERSION:3.0
@@ -21,7 +22,7 @@ FN:${fname} ${lname}
 ORG:${company}
 TITLE:${position}
 TEL;type=CELL:${personalphone}
-ADR:;;${street};${city};;${state};${country}
+ADR:;;${street};${state};${city};${postc};${country}
 TEL;type=WORK:${workphone}
 EMAIL;type=WORK:${email2}
 EMAIL;type=HOME:${email1}
