@@ -34,8 +34,12 @@ END:VCARD
     `.trim();
 
     const qr = qrcode(0, 'L');
+    // 0 - type number [version 1 to 40, setting at 0 so it automatically chooses lowest version that fits the data]
+    // L is error correction level [ Low, medium, quartile and high], specifies how much the QR can be damaged or obscured while still being readable
     qr.addData(vCard);
+    //adds vCard value into qr code
     qr.make();
+    //generates the qr code
 
     const canvas = document.createElement('canvas');
     const size = 4900;
